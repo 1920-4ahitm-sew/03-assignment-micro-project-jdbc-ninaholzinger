@@ -1,0 +1,4 @@
+package at.htl.carRental.rest;
+
+public class RestConfig {
+}
