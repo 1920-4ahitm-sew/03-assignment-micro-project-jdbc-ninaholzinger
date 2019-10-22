@@ -1,4 +1,4 @@
 package at.htl.carRental.rest;
 
-public class Vehicle {
+public class VehicleEndpoint {
 }
