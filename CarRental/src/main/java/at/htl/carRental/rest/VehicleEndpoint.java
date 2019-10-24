@@ -2,22 +2,29 @@ package at.htl.carRental.rest;
 
 import at.htl.carRental.model.Vehicle;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Path("vehicle")
+@Path("/")
 public class VehicleEndpoint {
 
+    @PersistenceContext
+    EntityManager em;
+
     @GET
-    @Path("{id}")
+    @Path("get/{id}")
     @Produces({
             MediaType.APPLICATION_JSON,
             MediaType.TEXT_PLAIN})
     public Vehicle find(@PathParam("id") long id){
-        return new Vehicle("Audi" + id, "A6",2011,2011);
+        //return new Vehicle("Audi" + id, "A6",2011,2011);
+        System.out.println("hey");
+        return em.find(Vehicle.class,id);
 
     }
 
@@ -29,15 +36,22 @@ public class VehicleEndpoint {
     }
 
     @DELETE
-    @Path("{id}")
+    @Path("delete/{id}")
     public void delete(@PathParam("id") long id){
-        System.out.println("deleted " + id);
+
+        em.remove(em.find(Vehicle.class,id));
+
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void save(Vehicle vehicle){
-        System.out.println("Vehicle: " +vehicle);
+
+        em.getTransaction().begin();;
+        Vehicle vehicle1 = new Vehicle("Peugot","207",2005,2005);
+        em.persist(vehicle1);
+        em.getTransaction().commit();
+        System.out.println(vehicle1.toString());
     }
 
 
