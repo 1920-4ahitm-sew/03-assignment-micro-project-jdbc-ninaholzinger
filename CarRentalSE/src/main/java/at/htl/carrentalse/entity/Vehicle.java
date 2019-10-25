@@ -1,7 +1,14 @@
 package at.htl.carrentalse.entity;
 
+import javax.persistence.*;
+
+@Entity
+@NamedQueries(@NamedQuery(name = "vehicleList", query = "select v from Vehicle v where  v.id =?1"))
 public class Vehicle {
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String brand;
     private String type;
