@@ -1,14 +1,20 @@
 package at.htl.carRental.model;
 
+import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement
+//@XmlRootElement
+@Entity
+@NamedQueries(@NamedQuery(name = "vehicleList", query = "select v from Vehicle v"))
 public class Vehicle {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String brand;
     private String type;
     private int constructionYear;
     private int pivotalYear;
+
 
     public Vehicle() {
     }
@@ -19,6 +25,14 @@ public class Vehicle {
         this.constructionYear = constructionYear;
         this.pivotalYear = pivotalYear;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    /*public void setId(Long id) {
+        this.id = id;
+    }*/
 
     public String getBrand() {
         return brand;
@@ -54,11 +68,6 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle{" +
-                "brand='" + brand + '\'' +
-                ", type='" + type + '\'' +
-                ", constructionYear=" + constructionYear +
-                ", pivotalYear=" + pivotalYear +
-                '}';
+        return "" + brand + ", " + type + ", " + constructionYear + ", " + pivotalYear;
     }
 }
