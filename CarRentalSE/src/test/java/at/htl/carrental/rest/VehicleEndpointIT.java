@@ -2,6 +2,7 @@ package at.htl.carrental.rest;
 
 
 import at.htl.carrentalse.entity.Vehicle;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,14 +18,14 @@ public class VehicleEndpointIT {
 
     static EntityManager em;
 
-    @BeforeEach
+    @BeforeAll
     private  static void init(){
         em = Persistence.createEntityManagerFactory("myPU").createEntityManager();
     }
 
     @Test
     public void testGet(){
-        TypedQuery<Vehicle> query = em.createNamedQuery("CarRental",Vehicle.class).setParameter(1,1);
+        TypedQuery<Vehicle> query = em.createNamedQuery("vehicleList",Vehicle.class).setParameter(1,1);
         Vehicle vehicle = query.getSingleResult();
         assertThat(vehicle.getBrand(), is("Audi"));
         assertThat(vehicle.getType(),is("A6"));
