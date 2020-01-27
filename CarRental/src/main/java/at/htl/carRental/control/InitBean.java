@@ -1,6 +1,6 @@
-package at.htl.carRental;
+package at.htl.carRental.control;
 
-import at.htl.carRental.model.Vehicle;
+import at.htl.carRental.entity.Vehicle;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Destroyed;

@@ -1,7 +1,7 @@
-package at.htl.carRental.model;
+package at.htl.carRental.entity;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+
 
 //@XmlRootElement
 @Entity
@@ -14,6 +14,7 @@ public class Vehicle {
     private String type;
     private int constructionYear;
     private int pivotalYear;
+
 
 
     public Vehicle() {

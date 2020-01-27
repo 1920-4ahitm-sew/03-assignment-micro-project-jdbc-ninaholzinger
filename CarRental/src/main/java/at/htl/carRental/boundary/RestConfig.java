@@ -1,4 +1,4 @@
-package at.htl.carRental.rest;
+package at.htl.carRental.boundary;
 
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;

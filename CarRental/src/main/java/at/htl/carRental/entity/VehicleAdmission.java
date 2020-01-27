@@ -1,4 +1,4 @@
-package at.htl.carRental.model;
+package at.htl.carRental.entity;
 
 import java.util.LinkedList;
 import java.util.List;

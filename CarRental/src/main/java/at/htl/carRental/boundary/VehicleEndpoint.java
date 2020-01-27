@@ -1,6 +1,6 @@
-package at.htl.carRental.rest;
+package at.htl.carRental.boundary;
 
-import at.htl.carRental.model.Vehicle;
+import at.htl.carRental.entity.Vehicle;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -47,7 +47,7 @@ public class VehicleEndpoint {
     @Consumes(MediaType.APPLICATION_JSON)
     public void save(Vehicle vehicle){
 
-        em.getTransaction().begin();;
+        em.getTransaction().begin();
         Vehicle vehicle1 = new Vehicle("Peugot","207",2005,2005);
         em.persist(vehicle1);
         em.getTransaction().commit();
