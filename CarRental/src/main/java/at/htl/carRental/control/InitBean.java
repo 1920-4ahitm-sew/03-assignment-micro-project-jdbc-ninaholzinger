@@ -6,6 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Destroyed;
 import javax.enterprise.context.Initialized;
 import javax.enterprise.event.Observes;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -13,8 +14,13 @@ import javax.transaction.Transactional;
 @ApplicationScoped
 @Transactional
 public class InitBean {
+
     @PersistenceContext
     EntityManager em;
+
+    @Inject
+    VehicleDao vehicleDao;
+
     public void init(@Observes@Initialized(ApplicationScoped.class) Object init){
 
         Vehicle audi = new Vehicle("Audi","A6",2011,2011);
